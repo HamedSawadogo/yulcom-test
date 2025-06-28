@@ -22,6 +22,7 @@ public class Corporation extends BaseEntity
     private String name;
     @Enumerated(EnumType.STRING)
     private CorporationType type;
+    private String description;
 
 }
 

@@ -1,4 +1,4 @@
-package com.yulcom.inoutfolderapp.application.folders.create.dtos;
+package com.yulcom.inoutfolderapp.application.folders.create.dtos.in;
 
 import com.yulcom.inoutfolderapp.application.dtos.products.in.CreateProductRequest;
 import com.yulcom.inoutfolderapp.domain.enums.Currency;

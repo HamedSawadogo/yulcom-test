@@ -7,11 +7,23 @@ create table corporations
   name      varchar(255),
   type      varchar(255)
     constraint corporations_type_check
-      check ((type)::text = ANY ((ARRAY ['EMITTER'::character varying, 'HANDLER'::character varying])::text[]))
+      check ((type)::text = ANY ((ARRAY ['EMITTER'::character varying, 'PROCESSING_AGENCY'::character varying])::text[]))
 );
 
 alter table corporations
 owner to folder_app_user;
+
+INSERT INTO corporations (id, name, type, createdat, updatedat)
+VALUES
+('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12', 'Direction des Douanes', 'PROCESSING_AGENCY', NOW(), NOW()),
+('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a13', 'Chambre de Commerce', 'PROCESSING_AGENCY', NOW(), NOW()),
+('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a14', 'Banque partenaire agréée', 'PROCESSING_AGENCY', NOW(), NOW()),
+('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a15', 'Agence nationale d’inspection', 'PROCESSING_AGENCY', NOW(), NOW()),
+('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a16', 'Ministère de l’Environnement', 'PROCESSING_AGENCY', NOW(), NOW()),
+('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a17', 'Agence nationale du médicament', 'PROCESSING_AGENCY', NOW(), NOW()),
+('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a18', 'Ministère de la Santé', 'PROCESSING_AGENCY', NOW(), NOW()),
+('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a19', 'BCEAO', 'PROCESSING_AGENCY', NOW(), NOW());
+
 
 create table corporateusers
 (

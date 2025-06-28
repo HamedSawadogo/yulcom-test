@@ -6,5 +6,5 @@ import lombok.Getter;
 public enum CorporationType
 {
     EMITTER,
-    HANDLER
+    PROCESSING_AGENCY
 }

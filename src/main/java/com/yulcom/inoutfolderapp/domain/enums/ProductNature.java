@@ -10,7 +10,7 @@ public enum ProductNature {
     ELECTRONICS("electronique"),
     TEXTILE("textile");
 
-    private String value;
+    private final String value;
 
     ProductNature(String value)
     {

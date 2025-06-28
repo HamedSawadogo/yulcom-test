@@ -1,6 +1,7 @@
 package com.yulcom.inoutfolderapp.application.folders.create.services;
 
-import com.yulcom.inoutfolderapp.domain.enums.FolderType;
+import com.yulcom.inoutfolderapp.application.folders.create.dtos.in.CreateFolderRequest;
+import com.yulcom.inoutfolderapp.application.folders.create.dtos.out.GetFolderResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,6 +11,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class CreateFolder
 {
-    //type de fichier
+    public GetFolderResponse handle(CreateFolderRequest request) {
+        return null;
+    }
+
 
 }
