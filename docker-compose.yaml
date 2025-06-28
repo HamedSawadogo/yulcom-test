@@ -1,0 +1,19 @@
+services:
+  yulcom-folder-app-db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: folder_app_user
+      POSTGRES_PASSWORD: folder_app_pwd
+      POSTGRES_DB: folder_app_db
+    restart: unless-stopped
+    networks:
+      - yulcom-network
+    ports:
+      - "5441:5432"
+    volumes:
+      - folder_app_data:/var/lib/postgresql/data
+volumes:
+  folder_app_data:  {}
+networks:
+  yulcom-network: {}
+

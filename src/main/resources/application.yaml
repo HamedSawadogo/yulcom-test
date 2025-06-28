@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    password: ${APP_PASSWORD:folder_app_pwd}
+    username: ${APP_USER:folder_app_user}
+    url: ${APP_DB_LOCAL_URL:jdbc:postgresql://localhost:5441/folder_app_db}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    database: postgresql
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        default_schema: public
+  servlet:
+    multipart:
+      enabled: 'true'
+      max-request-size: 12MB
+      file-size-threshold: 2KB
+  flyway:
+    locations: classpath:db/migration
+    enabled: true
+server:
+  port: 8092
+  servlet:
+    context-path: /api/v1
+  security:
+    jwt:
+      secret: 'eyJhbGciOiJIUzI1NiJ9.ew0KICAic3ViIjogIjEyMzQ1a2tvemRva29rbGVsa2U2Nzg5MCIsDQogICJuYW1lIjogImpqa2RrbyJsZXBsZHBrb3NlciIsDQogICJpYXQiOiAxNTE2Mmxla29rb2VrIm8zOTAyMg0KfQ._ITsE8gTUdiOj6SNklb5Aapq7ckg_MvS8FVeRldHMe0'
+
+cors:
+  allowed-origins:
+    dev: "http://localhost:4200"
+    prod: "http://localhost:4200"
