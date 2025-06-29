@@ -1,8 +1,8 @@
 package com.yulcom.inoutfolderapp.domain.entities;
 
-import com.yulcom.inoutfolderapp.domain.enums.DocumentType;
 import com.yulcom.inoutfolderapp.domain.enums.FilePriority;
 import com.yulcom.inoutfolderapp.domain.enums.FileStatus;
+import com.yulcom.inoutfolderapp.domain.enums.FileType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -13,11 +13,11 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
@@ -25,11 +25,12 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "Files")
 @Entity
+@ToString
 public class File extends BaseEntity
 {
 
     @Enumerated(EnumType.STRING)
-    private DocumentType type;
+    private FileType type;
 
     @Enumerated(EnumType.STRING)
     private FilePriority priority;

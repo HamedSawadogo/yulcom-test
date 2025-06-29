@@ -26,8 +26,6 @@ public class FileAction extends BaseEntity
     @OneToOne
     private CorporateUser performedBy;
     @Enumerated(EnumType.STRING)
-    private FileStatus oldStatus;
-    @Enumerated(EnumType.STRING)
-    private FileStatus newStatus;
+    private FileStatus status;
     private LocalDateTime dateTime;
 }

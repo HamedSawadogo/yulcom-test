@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 
 @Getter
@@ -17,6 +18,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "Corporations")
 @Entity
+@ToString
 public class Corporation extends BaseEntity
 {
     private String name;

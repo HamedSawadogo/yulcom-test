@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 
 @Builder
@@ -24,6 +25,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Table(name = "Folders")
 @Entity
+@ToString
 public class Folder extends BaseEntity
 {
     private FolderType type;
@@ -37,8 +39,6 @@ public class Folder extends BaseEntity
     @OneToMany(fetch = FetchType.LAZY)
     private List<File> files;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Corporation destinationCorporation;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private CorporateUser createdBy;

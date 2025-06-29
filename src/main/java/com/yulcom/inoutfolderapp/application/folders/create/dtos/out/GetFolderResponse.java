@@ -1,7 +1,7 @@
 package com.yulcom.inoutfolderapp.application.folders.create.dtos.out;
 
-import com.yulcom.inoutfolderapp.application.dtos.products.out.GetCorporationResponse;
-import com.yulcom.inoutfolderapp.application.dtos.products.out.GetProductResponse;
+import com.yulcom.inoutfolderapp.application.dtos.out.GetFileDto;
+import com.yulcom.inoutfolderapp.application.dtos.out.GetProductDto;
 import com.yulcom.inoutfolderapp.domain.enums.Currency;
 import com.yulcom.inoutfolderapp.domain.enums.FolderType;
 import java.util.List;
@@ -18,7 +18,7 @@ import lombok.Setter;
 @Builder
 public class GetFolderResponse {
    private FolderType type;
-   private GetCorporationResponse corporation;
-   private List<GetProductResponse> products;
+   private List<GetProductDto> products;
    private Currency currency;
+   private List<GetFileDto> files;
 }

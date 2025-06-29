@@ -1,7 +1,7 @@
 package com.yulcom.inoutfolderapp.domain.exceptions.validations;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.yulcom.inoutfolderapp.application.dtos.products.out.HttpErrorResponse;
+import com.yulcom.inoutfolderapp.application.dtos.out.HttpErrorResponse;
 import io.micrometer.common.lang.NonNullApi;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.validation.ConstraintViolation;
