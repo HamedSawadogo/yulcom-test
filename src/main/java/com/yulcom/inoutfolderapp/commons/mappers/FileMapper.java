@@ -8,7 +8,7 @@ public class FileMapper
     public static GetFileDto toResponse(File file) {
         return GetFileDto.builder()
             .assignedHandler(CorporationMapper.toResponse(file.getAssignedHandler()))
-            .type(file.getType())
+            .type(file.getType().getDescription())
             .priority(file.getPriority())
             .status(file.getStatus())
             .build();

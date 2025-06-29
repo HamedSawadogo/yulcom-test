@@ -2,6 +2,7 @@ package com.yulcom.inoutfolderapp.domain.entities;
 
 import com.yulcom.inoutfolderapp.domain.enums.Currency;
 import com.yulcom.inoutfolderapp.domain.enums.FolderType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToOne;
@@ -9,6 +10,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -33,11 +35,19 @@ public class Folder extends BaseEntity
     private BigDecimal totalAmount;
 
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<Product> products;
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<Product> products  = new ArrayList<>();
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<File> files;
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<File> files = new ArrayList<>();
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -50,6 +60,7 @@ public class Folder extends BaseEntity
         this.totalAmount = calculateTotalAmount();
         this.updatedAt = LocalDateTime.now();
     }
+
 
     private BigDecimal calculateTotalAmount()
     {

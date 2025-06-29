@@ -30,8 +30,8 @@ public class CreateFolder
         var folder = FolderMapper.toEntity(request).build();
         folder.setProducts(ProductMapper.toEntityList(request.products()));
         var generatedFiles = filesDeterminator.handle(folder);
+        folder.setFiles(generatedFiles);
         folderRepository.save(folder);
-        fileRepository.saveAll(generatedFiles);
         return FolderMapper.toResponse(folder);
     }
 }

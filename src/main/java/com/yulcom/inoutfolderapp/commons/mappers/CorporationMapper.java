@@ -10,7 +10,6 @@ public class CorporationMapper
         return GetCorporationDto.builder()
             .type(corporation.getType())
             .name(corporation.getName())
-            .description(corporation.getDescription())
             .build();
     }
 }

@@ -11,9 +11,10 @@ services:
     ports:
       - "5441:5432"
     volumes:
-      - folder_app_data:/var/lib/postgresql/data
+      - yulcom_app_da:/var/lib/postgresql/data
+
 volumes:
-  folder_app_data:  {}
+  yulcom_app_da: {}
+
 networks:
   yulcom-network: {}
-

@@ -90,7 +90,7 @@ public class FilesDeterminator
         file.setStatus(FileStatus.PENDING);
         file.setPriority(FilePriority.NORMAL);
         file.setAssignedHandler(corporationRepository.findByName(processingStructureName.getOfficialName()).orElse(null));
-        file.addAction(new FileAction(null, FileStatus.PENDING, LocalDateTime.now()));
+        file.addAction(new FileAction(null, LocalDateTime.now()));
         file.setCreatedAt(LocalDateTime.now());
         return file;
     }

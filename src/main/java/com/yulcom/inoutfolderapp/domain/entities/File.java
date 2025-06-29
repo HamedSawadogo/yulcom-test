@@ -3,6 +3,7 @@ package com.yulcom.inoutfolderapp.domain.entities;
 import com.yulcom.inoutfolderapp.domain.enums.FilePriority;
 import com.yulcom.inoutfolderapp.domain.enums.FileStatus;
 import com.yulcom.inoutfolderapp.domain.enums.FileType;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -44,8 +45,12 @@ public class File extends BaseEntity
     @ManyToOne(fetch = FetchType.LAZY)
     private Folder associatedFolder;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<FileAction> actionHistory;
+    @OneToMany(
+        fetch = FetchType.LAZY,
+        cascade = CascadeType.ALL,
+        orphanRemoval = true
+    )
+    private List<FileAction> actionHistory = new ArrayList<>();
 
     public void addAction(FileAction action)
     {

@@ -13,28 +13,13 @@ create table corporations
 alter table corporations
 owner to folder_app_user;
 
-INSERT INTO corporations (id, name, type, createdat, updatedat)
-VALUES
-('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a12', 'Direction des Douanes', 'PROCESSING_AGENCY', NOW(), NOW()),
-('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a13', 'Chambre de Commerce', 'PROCESSING_AGENCY', NOW(), NOW()),
-('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a14', 'Banque partenaire agréée', 'PROCESSING_AGENCY', NOW(), NOW()),
-('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a15', 'Agence nationale d’inspection', 'PROCESSING_AGENCY', NOW(), NOW()),
-('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a16', 'Ministère de l’Environnement', 'PROCESSING_AGENCY', NOW(), NOW()),
-('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a17', 'Agence nationale du médicament', 'PROCESSING_AGENCY', NOW(), NOW()),
-('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a18', 'Ministère de la Santé', 'PROCESSING_AGENCY', NOW(), NOW()),
-('a0eebc99-9c0b-4ef8-bb6d-6bb9bd380a19', 'BCEAO', 'PROCESSING_AGENCY', NOW(), NOW());
-
-
 create table corporateusers
 (
   isactive       boolean,
   createdat      timestamp(6),
   lastloginat    timestamp(6),
   updatedat      timestamp(6),
-  corporation_id uuid
-    unique
-    constraint fkrptu7iim0o1v1u654tmvs791g
-      references corporations,
+  corporation_id uuid,
   id             uuid not null
     primary key,
   password       varchar(255),
@@ -113,9 +98,6 @@ create table files
       check ((status)::text = ANY
              ((ARRAY ['PENDING'::character varying, 'FILLED'::character varying, 'SIGNED'::character varying])::text[])),
   type                varchar(255)
-    constraint files_type_check
-      check ((type)::text = ANY
-             ((ARRAY ['INVOICE'::character varying, 'CONTRACT'::character varying, 'CERTIFICATE'::character varying, 'REPORT'::character varying, 'LICENSE'::character varying, 'MANIFEST'::character varying, 'OTHER_DOCUMENT'::character varying])::text[]))
 );
 
 alter table files
@@ -183,9 +165,7 @@ alter table folders_products
 
 create table userroles
 (
-  name        smallint
-    constraint userroles_name_check
-      check ((name >= 0) AND (name <= 3)),
+  name        varchar(30),
   createdat   timestamp(6),
   updatedat   timestamp(6),
   id          uuid not null
