@@ -1,16 +1,15 @@
-package com.yulcom.inoutfolderapp.infrastructure.security;
+package com.yulcom.inoutfolderapp.infrastructure.configs.security.filters;
 
-
-import com.yulcom.inoutfolderapp.domain.repositories.CorporateUserRepository;
-import com.yulcom.inoutfolderapp.infrastructure.security.utils.JwtUtils;
+import com.yulcom.inoutfolderapp.infrastructure.configs.security.services.CorporateUserDetailsService;
+import com.yulcom.inoutfolderapp.infrastructure.configs.security.utils.JwtUtils;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.file.AccessDeniedException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
@@ -21,7 +20,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     private final JwtUtils jwtUtils;
-    private final CorporateUserRepository userRepository;
+    private final CorporateUserDetailsService corporateUserDetailsService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -35,17 +34,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String token = header.substring(7);
         try {
             String userName = jwtUtils.getUserNameFromJwtToken(token);
-            var userOptional = userRepository.findByUsername(userName);
-            if (userOptional.isEmpty()) {
-                filterChain.doFilter(request, response);
-                return;
-            }
-            var user = userOptional.get();
+            System.err.println("Usernamme" + userName);
+            var user  = corporateUserDetailsService.loadUserByUsername(userName);
+            System.err.println("USER" + user);
             UsernamePasswordAuthenticationToken authentication =
-                new UsernamePasswordAuthenticationToken(user, null, user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName().name())).toList());
+                new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
         } catch (Exception ex) {
-
         }
         filterChain.doFilter(request, response);
     }

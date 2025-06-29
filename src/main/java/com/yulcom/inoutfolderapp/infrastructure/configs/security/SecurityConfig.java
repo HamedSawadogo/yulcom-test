@@ -1,5 +1,6 @@
-package com.yulcom.inoutfolderapp.infrastructure.security;
+package com.yulcom.inoutfolderapp.infrastructure.configs.security;
 
+import com.yulcom.inoutfolderapp.infrastructure.configs.security.filters.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,17 +27,13 @@ public class SecurityConfig
             .csrf(AbstractHttpConfigurer::disable)
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/v1/auth/**").permitAll()
+                .requestMatchers("/auth/login").permitAll()
                 .requestMatchers(
                         "/swagger-ui/**",
                         "/v3/api-docs/**",
                         "/swagger-ui.html"
                     ).permitAll()
-//                .requestMatchers("/api/v1/transactions/**").hasRole("USER")
-//                .requestMatchers("/api/v1/auth/profile").hasRole("USER")
-//                .requestMatchers("/api/v1/users/**").hasRole("USER")
-//                .requestMatchers("/api/v1/ocr").hasRole("USER")
-                .anyRequest().permitAll()
+                .anyRequest().authenticated()
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
             .build();

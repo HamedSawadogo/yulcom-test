@@ -1,4 +1,4 @@
-package com.yulcom.inoutfolderapp.infrastructure.security.utils;
+package com.yulcom.inoutfolderapp.infrastructure.configs.security.utils;
 
 import com.yulcom.inoutfolderapp.domain.entities.CorporateUser;
 import io.jsonwebtoken.Jwts;
@@ -14,6 +14,7 @@ public class JwtUtils {
     @Value("${server.security.jwt.secret}")
     private String jwtSecret;
     private final long jwtExpirationMs = 86400000;
+    private final String USERNAME_KEY = "username";
 
 
     public String generateToken(CorporateUser user) {
@@ -27,13 +28,14 @@ public class JwtUtils {
     }
 
     public String getUserNameFromJwtToken(String token) {
-        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
+        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().get(USERNAME_KEY).toString();
     }
 
     public Map<String, Object> generateClaims(CorporateUser user)
     {
         var claims = new HashMap<String, Object>();
         claims.put("id", user.getId());
+        claims.put("username", user.getUsername());
         claims.put("roles", user.getRoles().stream().map(role -> role.getName().name()).toList());
         return claims;
     }

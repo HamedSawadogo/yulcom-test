@@ -1,4 +1,4 @@
-package com.yulcom.inoutfolderapp.infrastructure.security.services;
+package com.yulcom.inoutfolderapp.infrastructure.configs.security.services;
 
 import com.yulcom.inoutfolderapp.domain.repositories.CorporateUserRepository;
 import lombok.RequiredArgsConstructor;
