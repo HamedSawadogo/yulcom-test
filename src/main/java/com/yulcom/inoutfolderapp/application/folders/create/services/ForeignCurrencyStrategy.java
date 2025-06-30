@@ -5,8 +5,10 @@ import static com.yulcom.inoutfolderapp.domain.enums.ProcessingStructureName.*;
 
 import com.yulcom.inoutfolderapp.application.folders.create.helpers.FileGenerator;
 import com.yulcom.inoutfolderapp.domain.entities.File;
+import com.yulcom.inoutfolderapp.domain.entities.FileDependency;
 import com.yulcom.inoutfolderapp.domain.entities.Folder;
 import com.yulcom.inoutfolderapp.domain.enums.Currency;
+import com.yulcom.inoutfolderapp.domain.enums.FileDependencyType;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,9 @@ public class ForeignCurrencyStrategy implements FileGenerationStrategy {
 
     @Override
     public List<File> generateFiles(Folder folder) {
-        return List.of(fileGenerator.generateFile(CURRENCY_EXCHANGE_DECLARATION, BCEAO));
+        var file  = fileGenerator.generateFile(CURRENCY_EXCHANGE_DECLARATION, BCEAO, 1);
+        file.addDependency(new FileDependency(FINANCIAL_CAPACITY_ATTESTATION.getDescription(), FileDependencyType.OPTIONAL));
+        return List.of(file);
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.yulcom.inoutfolderapp.commons.mappers;
 
-import com.yulcom.inoutfolderapp.application.dtos.out.GetCorporationDto;
+import com.yulcom.inoutfolderapp.commons.dtos.out.GetCorporationDto;
 import com.yulcom.inoutfolderapp.domain.entities.Corporation;
 
 public class CorporationMapper

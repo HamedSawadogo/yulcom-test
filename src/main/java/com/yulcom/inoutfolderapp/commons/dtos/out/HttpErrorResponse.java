@@ -1,4 +1,4 @@
-package com.yulcom.inoutfolderapp.application.dtos.out;
+package com.yulcom.inoutfolderapp.commons.dtos.out;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

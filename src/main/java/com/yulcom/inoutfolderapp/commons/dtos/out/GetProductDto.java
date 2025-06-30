@@ -1,4 +1,4 @@
-package com.yulcom.inoutfolderapp.application.dtos.out;
+package com.yulcom.inoutfolderapp.commons.dtos.out;
 
 import com.yulcom.inoutfolderapp.domain.enums.ProductNature;
 import java.io.Serializable;

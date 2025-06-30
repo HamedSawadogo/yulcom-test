@@ -1,8 +1,6 @@
 package com.yulcom.inoutfolderapp.domain.entities;
 
-import com.yulcom.inoutfolderapp.domain.enums.FilePriority;
 import com.yulcom.inoutfolderapp.domain.enums.FileStatus;
-import com.yulcom.inoutfolderapp.domain.enums.FileType;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -18,7 +16,7 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
+
 
 @Getter
 @Setter
@@ -26,18 +24,16 @@ import lombok.ToString;
 @AllArgsConstructor
 @Table(name = "Files")
 @Entity
-@ToString
 public class File extends BaseEntity
 {
+    private String type;
 
-    @Enumerated(EnumType.STRING)
-    private FileType type;
-
-    @Enumerated(EnumType.STRING)
-    private FilePriority priority;
+    private Integer priority;
 
     @Enumerated(EnumType.STRING)
     private FileStatus status;
+
+    private Boolean isEligible;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Corporation assignedHandler;
@@ -45,12 +41,23 @@ public class File extends BaseEntity
     @ManyToOne(fetch = FetchType.LAZY)
     private Folder associatedFolder;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    private List<FileDependency> dependencies;
+
     @OneToMany(
         fetch = FetchType.LAZY,
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
     private List<FileAction> actionHistory = new ArrayList<>();
+
+    public void addDependency(FileDependency fileDependency)
+    {
+        if (dependencies == null)  {
+            dependencies = new ArrayList<>();
+        }
+        dependencies.add(fileDependency);
+    }
 
     public void addAction(FileAction action)
     {

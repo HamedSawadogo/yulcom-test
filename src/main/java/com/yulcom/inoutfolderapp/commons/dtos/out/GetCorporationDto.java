@@ -1,8 +1,7 @@
-package com.yulcom.inoutfolderapp.application.dtos.out;
+package com.yulcom.inoutfolderapp.commons.dtos.out;
 
 import com.yulcom.inoutfolderapp.domain.enums.CorporationType;
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Value;
 
@@ -10,8 +9,6 @@ import lombok.Value;
 @Builder
 public class GetCorporationDto implements Serializable
 {
-    LocalDateTime updatedAt;
     String name;
     CorporationType type;
-    String description;
 }

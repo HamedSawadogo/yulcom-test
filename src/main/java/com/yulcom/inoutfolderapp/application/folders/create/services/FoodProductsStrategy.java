@@ -17,8 +17,9 @@ public class FoodProductsStrategy implements FileGenerationStrategy {
 
     @Override
     public List<File> generateFiles(Folder folder) {
-        return List.of(fileGenerator.generateFile(HEALTH_CERTIFICATE, MINISTERE_SANTE));
+        return List.of(fileGenerator.generateFile(HEALTH_CERTIFICATE, MINISTERE_SANTE, 1));
     }
+
 
     @Override
     public boolean shouldExecute(Folder folder) {

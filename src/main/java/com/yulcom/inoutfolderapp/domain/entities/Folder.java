@@ -40,14 +40,14 @@ public class Folder extends BaseEntity
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<Product> products  = new ArrayList<>();
+    private List<Product> products;
 
     @OneToMany(
         fetch = FetchType.LAZY,
         cascade = CascadeType.ALL,
         orphanRemoval = true
     )
-    private List<File> files = new ArrayList<>();
+    private List<File> files;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -72,5 +72,16 @@ public class Folder extends BaseEntity
             .stream()
             .map(product -> product.getUnitValue().multiply(new BigDecimal(product.getQuantity())))
             .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    public void addFiles(List<File> files)
+    {
+        if (this.files == null) {
+            this.files = new ArrayList<>();
+        }
+        for (var file : files) {
+            file.setAssociatedFolder(this);
+            this.files.add(file);
+        }
     }
 }

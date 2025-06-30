@@ -1,5 +1,5 @@
 package com.yulcom.inoutfolderapp.application.folders.create.services;
-
+import com.yulcom.inoutfolderapp.application.folders.create.helpers.FileGenerator;
 import com.yulcom.inoutfolderapp.domain.entities.File;
 import com.yulcom.inoutfolderapp.domain.entities.Folder;
 import java.util.ArrayList;
@@ -14,17 +14,18 @@ import org.springframework.stereotype.Service;
 public class FilesDeterminator
 {
     private final List<FileGenerationStrategy> strategies;
+    private final FileGenerator fileGenerator;
 
     public List<File> handle(Folder request) {
         List<File> generatedFiles = new ArrayList<>();
         for (FileGenerationStrategy strategy : strategies) {
             if (strategy.shouldExecute(request)) {
-                generatedFiles.addAll(strategy.generateFiles(request));
+                var files = strategy.generateFiles(request);
+                generatedFiles.addAll(files);
+                files.forEach(file ->  generatedFiles.addAll(fileGenerator.generateDependencies(file)));
             }
         }
         generatedFiles.forEach(generatedFile -> log.info("Generated file: {}", generatedFile));
         return generatedFiles;
     }
-
-
 }

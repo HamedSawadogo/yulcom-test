@@ -1,6 +1,6 @@
 package com.yulcom.inoutfolderapp.application.folders.create.dtos.in;
 
-import com.yulcom.inoutfolderapp.application.dtos.in.CreateProductRequest;
+import com.yulcom.inoutfolderapp.commons.dtos.in.CreateProductRequest;
 import com.yulcom.inoutfolderapp.domain.enums.Currency;
 import com.yulcom.inoutfolderapp.domain.enums.FolderType;
 import jakarta.validation.constraints.NotEmpty;

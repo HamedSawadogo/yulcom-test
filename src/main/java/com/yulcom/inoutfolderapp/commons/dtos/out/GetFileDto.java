@@ -1,6 +1,5 @@
-package com.yulcom.inoutfolderapp.application.dtos.out;
+package com.yulcom.inoutfolderapp.commons.dtos.out;
 
-import com.yulcom.inoutfolderapp.domain.enums.FilePriority;
 import com.yulcom.inoutfolderapp.domain.enums.FileStatus;
 import java.io.Serializable;
 import lombok.Builder;
@@ -14,7 +13,7 @@ import lombok.Value;
 public class GetFileDto implements Serializable
 {
     String type;
-    FilePriority priority;
+    Integer priority;
     FileStatus status;
     GetCorporationDto assignedHandler;
 

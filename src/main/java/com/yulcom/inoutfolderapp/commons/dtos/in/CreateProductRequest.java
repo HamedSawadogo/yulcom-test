@@ -1,4 +1,4 @@
-package com.yulcom.inoutfolderapp.application.dtos.in;
+package com.yulcom.inoutfolderapp.commons.dtos.in;
 
 import com.yulcom.inoutfolderapp.domain.enums.ProductNature;
 import jakarta.validation.constraints.NotBlank;

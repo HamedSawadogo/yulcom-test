@@ -21,7 +21,7 @@ public class CreateFolder
         var folder = FolderMapper.toEntity(request).build();
         folder.setProducts(ProductMapper.toEntityList(request.products()));
         var generatedFiles = filesDeterminator.handle(folder);
-        folder.setFiles(generatedFiles);
+        folder.addFiles(generatedFiles);
         folderRepository.save(folder);
         return FolderMapper.toResponse(folder);
     }

@@ -4,7 +4,9 @@ import static com.yulcom.inoutfolderapp.domain.enums.FileType.*;
 import static com.yulcom.inoutfolderapp.domain.enums.ProcessingStructureName.*;
 import com.yulcom.inoutfolderapp.application.folders.create.helpers.FileGenerator;
 import com.yulcom.inoutfolderapp.domain.entities.File;
+import com.yulcom.inoutfolderapp.domain.entities.FileDependency;
 import com.yulcom.inoutfolderapp.domain.entities.Folder;
+import com.yulcom.inoutfolderapp.domain.enums.FileDependencyType;
 import com.yulcom.inoutfolderapp.domain.enums.ProductNature;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +19,13 @@ public class ChemicalProductsStrategy implements FileGenerationStrategy {
 
     @Override
     public List<File> generateFiles(Folder folder) {
-        return List.of(fileGenerator.generateFile(SPECIAL_HANDLING_AUTHORIZATION, MINISTERE_ENVIRONNEMENT));
+        final  int filePriority = 1;
+        var file = fileGenerator.generateFile(SPECIAL_HANDLING_AUTHORIZATION, MINISTERE_ENVIRONNEMENT, filePriority);
+        file.addDependency(new FileDependency(IMPORT_DECLARATION.getDescription(), FileDependencyType.OR));
+        file.addDependency(new FileDependency(ORIGIN_CERTIFICATE.getDescription(), FileDependencyType.OR));
+        return List.of();
     }
+
 
     @Override
     public boolean shouldExecute(Folder folder) {

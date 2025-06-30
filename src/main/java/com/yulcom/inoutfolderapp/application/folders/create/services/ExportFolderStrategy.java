@@ -6,6 +6,7 @@ import com.yulcom.inoutfolderapp.application.folders.create.helpers.FileGenerato
 import com.yulcom.inoutfolderapp.domain.entities.File;
 import com.yulcom.inoutfolderapp.domain.entities.Folder;
 import com.yulcom.inoutfolderapp.domain.enums.FolderType;
+import java.util.ArrayList;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,12 @@ public class ExportFolderStrategy implements FileGenerationStrategy {
 
     @Override
     public List<File> generateFiles(Folder folder) {
-        return List.of(
-            fileGenerator.generateFile(ORIGIN_CERTIFICATE, CHAMBRE_DE_COMMERCE)
-        );
+        final  int filePriority = 1;
+        List<File> baseFiles = new ArrayList<>();
+        baseFiles.add(fileGenerator.generateFile(ORIGIN_CERTIFICATE, CHAMBRE_DE_COMMERCE, filePriority));
+        return baseFiles;
     }
+
 
     @Override
     public boolean shouldExecute(Folder folder) {

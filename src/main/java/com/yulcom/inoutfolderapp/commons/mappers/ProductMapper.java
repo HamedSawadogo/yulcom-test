@@ -1,7 +1,7 @@
 package com.yulcom.inoutfolderapp.commons.mappers;
 
-import com.yulcom.inoutfolderapp.application.dtos.in.CreateProductRequest;
-import com.yulcom.inoutfolderapp.application.dtos.out.GetProductDto;
+import com.yulcom.inoutfolderapp.commons.dtos.in.CreateProductRequest;
+import com.yulcom.inoutfolderapp.commons.dtos.out.GetProductDto;
 import com.yulcom.inoutfolderapp.domain.entities.Product;
 import java.util.List;
 import java.util.stream.Collectors;

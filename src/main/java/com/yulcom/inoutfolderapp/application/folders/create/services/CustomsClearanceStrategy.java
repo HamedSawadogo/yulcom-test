@@ -17,8 +17,11 @@ public class CustomsClearanceStrategy implements FileGenerationStrategy {
 
     @Override
     public List<File> generateFiles(Folder folder) {
-        return List.of(fileGenerator.generateFile(CUSTOMS_CLEARANCE_ATTESTATION, DIRECTION_DES_DOUANES));
+        final  int filePriority = 1;
+        var file = fileGenerator.generateFile(CUSTOMS_CLEARANCE_ATTESTATION, DIRECTION_DES_DOUANES, filePriority);
+        return List.of(file);
     }
+
 
     @Override
     public boolean shouldExecute(Folder folder) {
