@@ -2,6 +2,7 @@ package com.yulcom.inoutfolderapp.domain.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -32,7 +33,7 @@ public class CorporateUser extends BaseEntity implements UserDetails
     private Boolean isActive;
     private LocalDateTime lastLoginAt;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Corporation corporation;
 
     @Override

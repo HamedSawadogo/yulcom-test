@@ -41,8 +41,8 @@ public class File extends BaseEntity
     @ManyToOne(fetch = FetchType.LAZY)
     private Folder associatedFolder;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    private List<FileDependency> dependencies;
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<FileDependency> dependencies = new ArrayList<>();
 
     @OneToMany(
         fetch = FetchType.LAZY,

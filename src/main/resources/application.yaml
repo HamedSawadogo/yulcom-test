@@ -6,7 +6,7 @@ spring:
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
       naming:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
@@ -24,7 +24,7 @@ spring:
       file-size-threshold: 2KB
   flyway:
     locations: classpath:db/migration
-    enabled: true
+    enabled: false
 server:
   port: 8092
   servlet:

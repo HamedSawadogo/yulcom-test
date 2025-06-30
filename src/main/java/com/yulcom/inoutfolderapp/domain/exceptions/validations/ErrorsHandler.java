@@ -298,30 +298,6 @@ public class ErrorsHandler extends ResponseEntityExceptionHandler
         return ResponseEntity.status(response.status()).body(response);
     }
 
-//    @ExceptionHandler(ResourceNotFoundException.class)
-//    public ResponseEntity<Object> handleResourceNotFoundException(
-//        ResourceNotFoundException exception)
-//    {
-//        log.error("***** ResourceNotFoundException *****", exception);
-//        var response = HttpErrorResponse.builder()
-//            .status(HttpStatus.NOT_FOUND.value())
-//            .errorMessage(exception.getMessage())
-//            .dateTime(LocalDateTime.now())
-//            .build();
-//        return ResponseEntity.status(response.status()).body(response);
-//    }
-
-//    @ExceptionHandler(BadRequestException.class)
-//    public ResponseEntity<Object> handleMissingAttributeException(BadRequestException exception)
-//    {
-//        log.error("***** BadRequestException *****", exception);
-//        var response = HttpErrorResponse.builder()
-//            .status(HttpStatus.BAD_REQUEST.value())
-//            .errorMessage(exception.getMessage())
-//            .dateTime(LocalDateTime.now())
-//            .build();
-//        return ResponseEntity.status(response.status()).body(response);
-//    }
 
     @ExceptionHandler(JpaSystemException.class)
     public ResponseEntity<Object> handleJpaSystemException(JpaSystemException exception)
@@ -335,6 +311,7 @@ public class ErrorsHandler extends ResponseEntityExceptionHandler
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 
+
     @ExceptionHandler(JsonProcessingException.class)
     public ResponseEntity<Object> handleJsonProcessingException(JsonProcessingException exception)
     {
@@ -347,15 +324,4 @@ public class ErrorsHandler extends ResponseEntityExceptionHandler
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
     }
 
-
-    private HttpErrorResponse buildResponse(HttpStatus status, String code, String message, List<ValidationErrorData> validationErrors, List<Error> errors) {
-        return HttpErrorResponse.builder()
-                .status(status.value())
-                .code(code)
-                .errors(errors)
-                .errorMessage(message)
-                .validationErrors(validationErrors)
-                .dateTime(LocalDateTime.now())
-                .build();
-    }
 }

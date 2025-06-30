@@ -9,6 +9,7 @@ public class FileMapper
         return GetFileDto.builder()
             .assignedHandler(CorporationMapper.toResponse(file.getAssignedHandler()))
             .priority(file.getPriority())
+            .type(file.getType())
             .status(file.getStatus())
             .build();
     }
