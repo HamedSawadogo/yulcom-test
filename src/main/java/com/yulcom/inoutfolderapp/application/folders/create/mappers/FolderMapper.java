@@ -17,6 +17,7 @@ public class FolderMapper
     public static GetFolderResponse toResponse(Folder folder)
     {
         return GetFolderResponse.builder()
+            .id(folder.getId())
             .type(folder.getType())
             .files(folder.getFiles().stream().map(FileMapper::toResponse).toList())
             .currency(folder.getCurrency())

@@ -20,6 +20,7 @@ public class GetFolders
     private final FolderRepository folderRepository;
     private final AuthenticatedUSerService authenticatedUSerService;
 
+    //@CustumPreAuthorize('VIEW_FILE')
     public GetFoldersResponseDto handle(GetFoldersRequest request) {
         var authenticatedUser =  authenticatedUSerService.getCurrentUser();
         var corporationId = authenticatedUser.getCorporation().getId();
