@@ -1,6 +1,6 @@
 package com.yulcom.inoutfolderapp.commons.mappers;
 
-import com.yulcom.inoutfolderapp.commons.dtos.out.GetFileDto;
+import com.yulcom.inoutfolderapp.application.files.getallbyfolder.dtos.out.GetFileDto;
 import com.yulcom.inoutfolderapp.domain.entities.File;
 
 public class FileMapper

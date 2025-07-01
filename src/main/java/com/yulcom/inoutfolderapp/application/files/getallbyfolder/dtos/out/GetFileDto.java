@@ -1,5 +1,6 @@
-package com.yulcom.inoutfolderapp.commons.dtos.out;
+package com.yulcom.inoutfolderapp.application.files.getallbyfolder.dtos.out;
 
+import com.yulcom.inoutfolderapp.commons.dtos.out.GetCorporationDto;
 import com.yulcom.inoutfolderapp.domain.enums.FileStatus;
 import java.io.Serializable;
 import lombok.Builder;

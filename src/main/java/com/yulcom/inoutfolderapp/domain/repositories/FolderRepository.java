@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+
 public interface FolderRepository extends JpaRepository<Folder, UUID>
 {
     @Query("SELECT f FROM Folder f " +

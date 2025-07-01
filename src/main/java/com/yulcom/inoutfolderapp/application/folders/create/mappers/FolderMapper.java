@@ -20,7 +20,6 @@ public class FolderMapper
         return GetFolderResponse.builder()
             .id(folder.getId())
             .type(folder.getType())
-            .files(folder.getFiles().stream().filter(File::getIsEligible).map(FileMapper::toResponse).toList())
             .currency(folder.getCurrency())
             .build();
     }
