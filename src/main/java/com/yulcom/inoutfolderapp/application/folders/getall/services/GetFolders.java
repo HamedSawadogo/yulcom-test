@@ -1,8 +1,8 @@
-package com.yulcom.inoutfolderapp.application.users.getfolders.services;
+package com.yulcom.inoutfolderapp.application.folders.getall.services;
 
 import com.yulcom.inoutfolderapp.application.folders.create.mappers.FolderMapper;
-import com.yulcom.inoutfolderapp.application.users.getfolders.dtos.in.GetFoldersRequest;
-import com.yulcom.inoutfolderapp.application.users.getfolders.dtos.out.GetFoldersResponseDto;
+import com.yulcom.inoutfolderapp.application.folders.getall.dtos.in.GetFoldersRequest;
+import com.yulcom.inoutfolderapp.application.folders.getall.dtos.out.GetFoldersResponseDto;
 import com.yulcom.inoutfolderapp.commons.dtos.out.PaginationMetadata;
 import com.yulcom.inoutfolderapp.domain.repositories.FolderRepository;
 import com.yulcom.inoutfolderapp.infrastructure.configs.security.services.AuthenticatedUSerService;
@@ -20,7 +20,7 @@ public class GetFolders
     private final FolderRepository folderRepository;
     private final AuthenticatedUSerService authenticatedUSerService;
 
-    //@CustumPreAuthorize('VIEW_FILE')
+
     public GetFoldersResponseDto handle(GetFoldersRequest request) {
         var authenticatedUser =  authenticatedUSerService.getCurrentUser();
         var corporationId = authenticatedUser.getCorporation().getId();

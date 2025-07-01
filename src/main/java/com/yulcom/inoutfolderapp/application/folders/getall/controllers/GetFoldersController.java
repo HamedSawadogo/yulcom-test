@@ -1,8 +1,8 @@
-package com.yulcom.inoutfolderapp.application.users.getfolders.controllers;
+package com.yulcom.inoutfolderapp.application.folders.getall.controllers;
 
-import com.yulcom.inoutfolderapp.application.users.getfolders.dtos.in.GetFoldersRequest;
-import com.yulcom.inoutfolderapp.application.users.getfolders.dtos.out.GetFoldersResponseDto;
-import com.yulcom.inoutfolderapp.application.users.getfolders.services.GetFolders;
+import com.yulcom.inoutfolderapp.application.folders.getall.dtos.in.GetFoldersRequest;
+import com.yulcom.inoutfolderapp.application.folders.getall.dtos.out.GetFoldersResponseDto;
+import com.yulcom.inoutfolderapp.application.folders.getall.services.GetFolders;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

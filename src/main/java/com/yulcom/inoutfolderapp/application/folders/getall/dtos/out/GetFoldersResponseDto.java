@@ -1,4 +1,4 @@
-package com.yulcom.inoutfolderapp.application.users.getfolders.dtos.out;
+package com.yulcom.inoutfolderapp.application.folders.getall.dtos.out;
 
 import com.yulcom.inoutfolderapp.application.folders.create.dtos.out.GetFolderResponse;
 import com.yulcom.inoutfolderapp.commons.dtos.out.PaginationMetadata;

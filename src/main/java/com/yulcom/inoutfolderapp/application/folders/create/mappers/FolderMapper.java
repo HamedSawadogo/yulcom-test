@@ -3,6 +3,7 @@ package com.yulcom.inoutfolderapp.application.folders.create.mappers;
 import com.yulcom.inoutfolderapp.application.folders.create.dtos.in.CreateFolderRequest;
 import com.yulcom.inoutfolderapp.application.folders.create.dtos.out.GetFolderResponse;
 import com.yulcom.inoutfolderapp.commons.mappers.FileMapper;
+import com.yulcom.inoutfolderapp.domain.entities.File;
 import com.yulcom.inoutfolderapp.domain.entities.Folder;
 
 public class FolderMapper
@@ -19,7 +20,7 @@ public class FolderMapper
         return GetFolderResponse.builder()
             .id(folder.getId())
             .type(folder.getType())
-            .files(folder.getFiles().stream().map(FileMapper::toResponse).toList())
+            .files(folder.getFiles().stream().filter(File::getIsEligible).map(FileMapper::toResponse).toList())
             .currency(folder.getCurrency())
             .build();
     }

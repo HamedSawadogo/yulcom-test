@@ -2,6 +2,7 @@ package com.yulcom.inoutfolderapp.application.folders.create.helpers;
 
 import com.yulcom.inoutfolderapp.domain.entities.File;
 import com.yulcom.inoutfolderapp.domain.entities.FileAction;
+import com.yulcom.inoutfolderapp.domain.enums.FileActionType;
 import com.yulcom.inoutfolderapp.domain.enums.FileStatus;
 import com.yulcom.inoutfolderapp.domain.enums.FileType;
 import com.yulcom.inoutfolderapp.domain.enums.ProcessingStructureName;
@@ -30,7 +31,7 @@ public class FileGenerator
         file.setIsEligible(filePriority == 1);
         file.setStatus(FileStatus.PENDING);
         file.setAssignedHandler(corporationRepository.findByName(processingStructureName.getOfficialName()).orElse(null));
-        file.addAction(new FileAction(null, LocalDateTime.now()));
+        file.addAction(new FileAction(null, LocalDateTime.now(), FileActionType.CREATE));
         file.setCreatedAt(LocalDateTime.now());
         return file;
     }

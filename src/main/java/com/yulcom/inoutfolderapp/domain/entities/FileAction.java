@@ -1,6 +1,9 @@
 package com.yulcom.inoutfolderapp.domain.entities;
 
+import com.yulcom.inoutfolderapp.domain.enums.FileActionType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import java.time.LocalDateTime;
@@ -23,4 +26,6 @@ public class FileAction extends BaseEntity
     @OneToOne
     private CorporateUser performedBy;
     private LocalDateTime dateTime;
+    @Enumerated(EnumType.STRING)
+    private FileActionType action;
 }

@@ -2,6 +2,7 @@ package com.yulcom.inoutfolderapp.application.folders.create.services;
 import com.yulcom.inoutfolderapp.domain.entities.File;
 import com.yulcom.inoutfolderapp.domain.entities.Folder;
 import com.yulcom.inoutfolderapp.domain.enums.FileDependencyType;
+import com.yulcom.inoutfolderapp.domain.enums.FileType;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +17,6 @@ import org.springframework.stereotype.Service;
 public class FilesDeterminator
 {
     private final List<FileGenerationStrategy> strategies;
-    private static final int MIN_PRIORITY = 5;
 
     public List<File> handle(Folder folder)
     {
@@ -47,7 +47,6 @@ public class FilesDeterminator
     private int computePriority(File file, Map<String, File> filesByType)
     {
         int maxDependencyPriority = 1;
-
         if (file.getDependencies() == null || file.getDependencies().isEmpty())
         {
             return maxDependencyPriority;
@@ -65,6 +64,11 @@ public class FilesDeterminator
                 maxDependencyPriority = Math.max(maxDependencyPriority, depPriority);
             }
         }
+        if (file.getType().equals(FileType.CUSTOMS_CLEARANCE_ATTESTATION.getDescription()))  {
+            return maxDependencyPriority + 2;
+        }
+
+
         return maxDependencyPriority + 1;
     }
 }
