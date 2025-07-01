@@ -65,87 +65,67 @@ class CreateFolderControllerIT
             .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
             .andExpect(content().json(
                 """
-                 {
-                   "id": "8ffa46ad-bb84-40cc-900d-3fe5393fd0e5",
-                   "type": "IMPORT",
-                   "currency": "EUR",
-                   "files": [
-                     {
-                       "type": "Attestation de dédouanement",
-                       "priority": 4,
-                       "status": "PENDING",
-                       "assignedHandler": {
-                         "name": "Direction des Douanes",
-                         "type": "PROCESSING_AGENCY"
-                       }
-                     },
-                     {
-                       "type": "Attestation de capacité financière",
-                       "priority": 3,
-                       "status": "PENDING",
-                       "assignedHandler": {
-                         "name": "Banque partenaire agréée",
-                         "type": "PROCESSING_AGENCY"
-                       }
-                     },
-                     {
-                       "type": "Certificat sanitaire",
-                       "priority": 3,
-                       "status": "PENDING",
-                       "assignedHandler": {
-                         "name": "Ministère de la Santé",
-                         "type": "PROCESSING_AGENCY"
-                       }
-                     },
-                     {
-                       "type": "Déclaration d’échange de devise",
-                       "priority": 4,
-                       "status": "PENDING",
-                       "assignedHandler": {
-                         "name": "BCEAO",
-                         "type": "PROCESSING_AGENCY"
-                       }
-                     },
-                     {
-                       "type": "Contrôle préalable de marchandise",
-                       "priority": 1,
-                       "status": "PENDING",
-                       "assignedHandler": {
-                         "name": "Direction des Douanes",
-                         "type": "PROCESSING_AGENCY"
-                       }
-                     },
-                     {
-                       "type": "Déclaration d’importation",
-                       "priority": 2,
-                       "status": "PENDING",
-                       "assignedHandler": {
-                         "name": "Direction des Douanes",
-                         "type": "PROCESSING_AGENCY"
-                       }
-                     },
-                     {
-                       "type": "Autorisation de mise sur le marché",
-                       "priority": 3,
-                       "status": "PENDING",
-                       "assignedHandler": {
-                         "name": "Agence nationale du médicament",
-                         "type": "PROCESSING_AGENCY"
-                       }
-                     },
-                     {
-                       "type": "Inspection obligatoire avant embarquement",
-                       "priority": 4,
-                       "status": "PENDING",
-                       "assignedHandler": {
-                         "name": "Agence nationale d’inspection",
-                         "type": "PROCESSING_AGENCY"
-                       }
-                     }
-                   ]
-                 }
-
-
+                  {
+                    "id": "ffd5df22-e704-4fbf-8fd5-7b78e7d7ec2c",
+                    "type": "IMPORT",
+                    "currency": "EUR",
+                    "files": [
+                      {
+                        "type": "Attestation de dédouanement",
+                        "priority": 5,
+                        "status": "PENDING",
+                        "assignedHandler": {
+                          "name": "Direction des Douanes",
+                          "type": "PROCESSING_AGENCY"
+                        }
+                      },
+                      {
+                        "type": "Certificat sanitaire",
+                        "priority": 3,
+                        "status": "PENDING",
+                        "assignedHandler": {
+                          "name": "Ministère de la Santé",
+                          "type": "PROCESSING_AGENCY"
+                        }
+                      },
+                      {
+                        "type": "Déclaration d’échange de devise",
+                        "priority": 4,
+                        "status": "PENDING",
+                        "assignedHandler": {
+                          "name": "BCEAO",
+                          "type": "PROCESSING_AGENCY"
+                        }
+                      },
+                      {
+                        "type": "Contrôle préalable de marchandise",
+                        "priority": 1,
+                        "status": "PENDING",
+                        "assignedHandler": {
+                          "name": "Direction des Douanes",
+                          "type": "PROCESSING_AGENCY"
+                        }
+                      },
+                      {
+                        "type": "Déclaration d’importation",
+                        "priority": 2,
+                        "status": "PENDING",
+                        "assignedHandler": {
+                          "name": "Direction des Douanes",
+                          "type": "PROCESSING_AGENCY"
+                        }
+                      },
+                      {
+                        "type": "Autorisation de mise sur le marché",
+                        "priority": 3,
+                        "status": "PENDING",
+                        "assignedHandler": {
+                          "name": "Agence nationale du médicament",
+                          "type": "PROCESSING_AGENCY"
+                        }
+                      }
+                    ]
+                  }
               """
             ))
             .andDo(print()).andReturn();
