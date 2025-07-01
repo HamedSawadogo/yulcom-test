@@ -38,7 +38,7 @@ public class FillFileService
         if (!hasAllDependenciesSigned) {
             throw new DependenciesNotSignedException(ErrorMessagesHelpers.DEPENDENCIES_NOT_SIGNED_EXCEPTION_MESSAGE);
         }
-        file.setStatus(FileStatus.SIGNED);
+        file.setStatus(FileStatus.FILLED);
         file.addAction(new FileAction(authenticatedUser, LocalDateTime.now(), FileActionType.FILL));
         return FileMapper.toResponse(fileRepository.save(file));
     }
